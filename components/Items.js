@@ -6,20 +6,20 @@ import { TouchableOpacity } from 'react-native';
 const DATA = [
   {
     id: '1',
-    title: 'Item 1',
-    description: 'This is the first item',
+    title: 'Cupcake',
+    description: '',
     imageSource: require('../assets/favicon.png'),
   },
   {
     id: '2',
-    title: 'Item 2',
-    description: 'This is the second item',
+    title: 'Water',
+    description: '',
     imageSource: require('../assets/favicon.png'),
   },
   {
     id: '3',
-    title: 'Item 3',
-    description: 'This is the third item',
+    title: 'Milk ',
+    description: '',
     imageSource: require('../assets/favicon.png'),
   },
 ];
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 50,
+    height: 50,
     borderRadius: 75,
     marginBottom: 10,
   },

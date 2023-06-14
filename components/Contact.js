@@ -5,7 +5,9 @@ import { FontAwesome } from '@expo/vector-icons';
 
 const ContactUs = () => {
   const handleWhatsAppPress = () => {
-    // Handle WhatsApp press event
+    // Replace the phone number with your own phone number
+    const whatsappUrl = 'https://wa.me/1234567890';
+    Linking.openURL(whatsappUrl);
   };
 
   const handleLinkedInPress = () => {
@@ -15,11 +17,11 @@ const ContactUs = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.iconContainer} onPress={handleWhatsAppPress}>
-        <AntDesign name="whatsapp" size={32} color="green" />
-        <Text style={styles.iconLabel}>WhatsApp</Text>
+        <AntDesign name="twitter" size={32} color="white" />
+        <Text style={styles.iconLabel}>Twitter</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.iconContainer} onPress={handleLinkedInPress}>
-        <FontAwesome name="linkedin" size={32} color="#0077B5" />
+        <FontAwesome name="linkedin" size={32} color="white" />
         <Text style={styles.iconLabel}>LinkedIn</Text>
       </TouchableOpacity>
     </View>
@@ -28,20 +30,21 @@ const ContactUs = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    marginTop:200
+    backgroundColor: 'black',
   },
   iconContainer: {
     alignItems: 'center',
     marginBottom: 20,
+    marginHorizontal: 40,
   },
   iconLabel: {
     marginTop: 5,
     fontSize: 16,
     fontWeight: 'bold',
+    color: 'white',
   },
 });
 

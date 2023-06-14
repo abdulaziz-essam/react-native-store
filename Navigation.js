@@ -8,16 +8,22 @@ import ContactUs from './components/Contact';
 import SignInScreen from './components/signin/SignInScreen';
 import SignUp from './components/signup/SignUp';
 import AdminScreen from './components/adminPage/AdminScreen';
+import CartPage from './components/cartPage/CartPageScreen';
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+      <Stack.Navigator initialRouteName="signin">
         <Stack.Screen
           name="Home"
           component={LandingPage}
           options={{title: 'item'}}
+        />
+         <Stack.Screen
+          name="cart"
+          component={CartPage}
+          options={{title: 'cart'}}
         />
             <Stack.Screen
           name="admin"

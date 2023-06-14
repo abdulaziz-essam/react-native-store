@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Animated } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 const LandingPage = () => {
   const [titleAnim] = useState(new Animated.Value(0));
+  const navigation = useNavigation();
 
   const handleButtonPress = () => {
     Animated.timing(titleAnim, {
@@ -10,6 +11,7 @@ const LandingPage = () => {
       duration: 500,
       useNativeDriver: true,
     }).start();
+    navigation.navigate('items');
   };
 
   const titleOpacity = titleAnim.interpolate({
@@ -19,11 +21,12 @@ const LandingPage = () => {
 
   return (
     <View style={styles.container}>
-      <Animated.Text style={[styles.title, { opacity: titleOpacity }]}>Welcome to MyApp</Animated.Text>
+      <Animated.Text style={[styles.title, { opacity: titleOpacity }]}>Welcome to Ak Store</Animated.Text>
       <TouchableOpacity
         style={styles.button}
         onPress={handleButtonPress}
         activeOpacity={0.7}
+
       >
         <Text style={styles.buttonText}>Start</Text>
       </TouchableOpacity>

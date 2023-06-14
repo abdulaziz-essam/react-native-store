@@ -8,7 +8,7 @@ const AdminPage = () => {
   const [itemPrice, setItemPrice] = useState('');
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, []);
 
   const fetchData = async () => {
@@ -65,17 +65,22 @@ const AdminPage = () => {
   const renderItem = ({ item }) => {
     return (
       <View style={styles.itemContainer}>
-        <TextInput
-          style={styles.itemNameInput}
-          value={item.name}
-          onChangeText={(text) => handleUpdateItem(item.id, text, item.price)}
-        />
-        <TextInput
-          style={styles.itemPriceInput}
-          value={item.price}
-          onChangeText={(text) => handleUpdateItem(item.id, item.name, text)}
-        />
-        <TouchableOpacity style={styles.deleteButton} onPress={() => handleDeleteItem(item.id)}>
+        <View style={{ flexDirection: 'column', alignItems: 'center' }}>
+          <TextInput
+            style={styles.itemNameInput}
+            value={item.name}
+            onChangeText={(text) => handleUpdateItem(item.id, text, item.price)}
+          />
+          <TextInput
+            style={styles.itemPriceInput}
+            value={item.price}
+            onChangeText={(text) => handleUpdateItem(item.id, item.name, text)}
+          />
+        </View>
+        <TouchableOpacity
+          style={styles.deleteButton}
+          onPress={() => handleDeleteItem(item.id)}
+        >
           <Text style={styles.deleteButtonText}>X</Text>
         </TouchableOpacity>
       </View>
@@ -98,7 +103,7 @@ const AdminPage = () => {
           value={itemPrice}
           onChangeText={(text) => setItemPrice(text)}
         />
-        <TouchableOpacity style={styles.button} onPress={handleAddItem}>
+        <TouchableOpacity style={styles.button} >
           <Text style={styles.buttonText}>Add Item</Text>
         </TouchableOpacity>
       </View>
@@ -152,7 +157,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   itemContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     marginBottom: 10,
   },

@@ -19,6 +19,8 @@ const SignIn = () => {
         onChangeText={(text) => setEmail(text)}
         autoCapitalize="none"
         keyboardType="email-address"
+        placeholderTextColor="#ccc"
+        color="#fff"
       />
       <TextInput
         style={styles.input}
@@ -26,6 +28,8 @@ const SignIn = () => {
         value={password}
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
+        placeholderTextColor="#ccc"
+        color="#fff"
       />
       <TouchableOpacity style={styles.button} onPress={handleSignIn}>
         <Text style={styles.buttonText}>Sign In</Text>
@@ -40,22 +44,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: '#222',
+    
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#fff',
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#bbb',
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
     width: '100%',
+    color: '#fff',
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: 'purple',
     borderRadius: 5,
     padding: 10,
     width: '100%',
