@@ -1,62 +1,70 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { Image } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native';
-const DATA = [
+
+const data = [
   {
     id: '1',
     title: 'Cupcake',
     description: '',
-    imageSource: require('../assets/favicon.png'),
+    imageSource: require('../../assets/favicon.png'),
   },
   {
     id: '2',
     title: 'Water',
     description: '',
-    imageSource: require('../assets/favicon.png'),
+    imageSource: require('../../assets/favicon.png'),
   },
   {
     id: '3',
-    title: 'Milk ',
+    title: 'Milk',
     description: '',
-    imageSource: require('../assets/favicon.png'),
+    imageSource: require('../../assets/favicon.png'),
+  },
+  {
+    id: '4',
+    title: 'Milk',
+    description: '',
+    imageSource: require('../../assets/favicon.png'),
   },
 ];
 
-const Item = ({ title, description, imageSource }) => (
-  <View style={styles.item}>
-    <View style={styles.itemContent}>
-      <Image source={imageSource} style={styles.image} />
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.description}>{description}</Text>
-    </View>
-  </View>
-);
+const Item = ({ title, description, imageSource }) => {
+  const navigation = useNavigation();
+  
+    const handlePress = () => {
+      navigation.navigate('itempage', { item: { title, description } });
+    };
+
+
+  return (
+    <TouchableOpacity style={styles.item} onPress={handlePress}>
+      <View style={styles.itemContent}>
+        <Image source={imageSource} style={styles.image} />
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.description}>{description}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const ItemList = () => {
-    const navigation = useNavigation();
   const renderItem = ({ item }) => (
     <Item title={item.title} description={item.description} imageSource={item.imageSource} />
   );
-//   this method for navigate for specific item page
-  const handlePress = () => {
-    navigation.navigate('MyScreen');
-  };
 
   return (
- 
     <View style={styles.container}>
       <FlatList
-        data={DATA}
+        data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         numColumns={2}
       />
     </View>
-
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

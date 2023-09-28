@@ -11,7 +11,7 @@ const LandingPage = () => {
       duration: 500,
       useNativeDriver: true,
     }).start();
-    navigation.navigate('items');
+    navigation.navigate('cart');
   };
 
   const titleOpacity = titleAnim.interpolate({

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LandingPage from './components/LandingPage';
-import ItemList from './components/Items';
+import ItemList from './components/items/Items';
 import Product from './components/product/ProductScreen'
 import ContactUs from './components/Contact';
 import SignInScreen from './components/signin/SignInScreen';
@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator();
 const MyStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="signin">
+      <Stack.Navigator initialRouteName="home">
         <Stack.Screen
           name="Home"
           component={LandingPage}

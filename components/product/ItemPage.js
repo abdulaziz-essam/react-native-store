@@ -1,12 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { Text, View, StyleSheet } from 'react-native';
 
-const ItemPage = ({ name, price, details }) => {
+const ItemPage = () => {
+  const route = useRoute();
+  const { item } = route.params;
+
+  const { title, description } = item;
+
+  // Access the title and description and perform any necessary operations
+
   return (
     <View style={styles.container}>
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.price}>{price}</Text>
-      <Text style={styles.details}>{details}</Text>
+      <Text style={styles.title}>Title: {title}</Text>
+      <Text style={styles.description}>Description: {description}</Text>
     </View>
   );
 };
@@ -14,20 +21,19 @@ const ItemPage = ({ name, price, details }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#fff',
   },
-  name: {
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 16,
   },
-  price: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  details: {
-    fontSize: 16,
+  description: {
+    fontSize: 18,
+    textAlign: 'center',
   },
 });
 

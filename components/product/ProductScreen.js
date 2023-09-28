@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import ItemPage from './ItemPage';
-
+import { useRoute } from '@react-navigation/native';
 const ProductScreen = () => {
   // Example product data
   const product = {
