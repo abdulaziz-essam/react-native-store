@@ -7,11 +7,13 @@ const data = [
     id: '1',
     title: 'Cupcake',
     description: '',
+    price:10,
     imageSource: require('../../assets/favicon.png'),
   },
   {
     id: '2',
     title: 'Water',
+    price:34,
     description: '',
     imageSource: require('../../assets/favicon.png'),
   },
@@ -19,21 +21,23 @@ const data = [
     id: '3',
     title: 'Milk',
     description: '',
+    price:20,
     imageSource: require('../../assets/favicon.png'),
   },
   {
     id: '4',
     title: 'Milk',
+    price:83,
     description: '',
     imageSource: require('../../assets/favicon.png'),
   },
 ];
 
-const Item = ({ title, description, imageSource }) => {
+const Item = ({ title, description,price, imageSource }) => {
   const navigation = useNavigation();
   
     const handlePress = () => {
-      navigation.navigate('itempage', { item: { title, description } });
+      navigation.navigate('itempage', { item: { title, description ,price} });
     };
 
 
@@ -50,7 +54,7 @@ const Item = ({ title, description, imageSource }) => {
 
 const ItemList = () => {
   const renderItem = ({ item }) => (
-    <Item title={item.title} description={item.description} imageSource={item.imageSource} />
+    <Item title={item.title} description={item.description} imageSource={item.imageSource} price={item.price} />
   );
 
   return (

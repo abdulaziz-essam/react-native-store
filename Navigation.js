@@ -1,64 +1,76 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LandingPage from './components/LandingPage';
 import ItemList from './components/items/Items';
-import Product from './components/product/ProductScreen'
+import Product from './components/product/ProductScreen';
 import ContactUs from './components/Contact';
 import SignInScreen from './components/signin/SignInScreen';
 import SignUp from './components/signup/SignUp';
 import AdminScreen from './components/adminPage/AdminScreen';
 import CartPage from './components/cartPage/CartPageScreen';
+import AdminForm from './components/admin-form/Form.js'
+import Payment from './components/payment/Payment.js'
+
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={LandingPage}
-          options={{title: 'item'}}
+          options={{ title: 'item' }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="cart"
           component={CartPage}
-          options={{title: 'cart'}}
+          options={{ title: 'cart' }}
         />
-            <Stack.Screen
+        <Stack.Screen
           name="admin"
           component={AdminScreen}
-          options={{title: 'Admin Page'}}
+          options={{ title: 'Admin Page' }}
         />
            <Stack.Screen
+          name="payment"
+          component={Payment}
+          options={{ title: 'payment Page' }}
+        />
+        <Stack.Screen
           name="signin"
           component={SignInScreen}
-          options={{title: 'signin'}}
+          options={{ title: 'signin' }}
         />
-            <Stack.Screen
+        <Stack.Screen
           name="signup"
           component={SignUp}
-          options={{title: 'signup'}}
+          options={{ title: 'signup' }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="itempage"
           component={Product}
-          options={{title: 'item page'}}
+          options={{ title: 'item page' }}
         />
-           <Stack.Screen
+        <Stack.Screen
           name="contact"
           component={ContactUs}
-          options={{title: 'Contact'}}
+          options={{ title: 'Contact' }}
         />
-             <Stack.Screen
+        <Stack.Screen
           name="items"
           component={ItemList}
-          options={{title: 'Welcome'}}
+          options={{ title: 'Welcome' }}
         />
-
-      
+        <Stack.Screen
+          name="adminform"
+          component={AdminForm}
+          options={{ title: 'form' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-export default MyStack
+
+export default MyStack;
