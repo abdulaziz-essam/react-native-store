@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Alert, StyleSheet, Text } from 'react-native';
 
-const PaymentComponent = () => {
+const PaymentComponent = ({ route }) => {
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
 
+  const { price } = route.params;
+
   const handlePayment = () => {
     // Perform payment processing logic here
     if (cardNumber && expiryDate && cvv) {
-      Alert.alert('Payment Successful', 'Thank you for your purchase!');
+      Alert.alert('Payment Successful', `Thank you for your purchase! Price: ${price}`);
     } else {
       Alert.alert('Payment Failed', 'Please enter valid payment details.');
     }
@@ -39,6 +41,7 @@ const PaymentComponent = () => {
         keyboardType="numeric"
       />
       <Button title="Pay" onPress={handlePayment} />
+      <Text style={styles.priceText}>Price: {price}</Text>
     </View>
   );
 };
@@ -56,6 +59,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
+  },
+  priceText: {
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

@@ -1,51 +1,28 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Image, Button } from 'react-native';
-import * as ImagePicker from "react-native-image-picker"
+import React, { Component } from 'react';
+import { View, TouchableOpacity, Text } from 'react-native';
+import { CameraScreen, } from 'react-native-camera-kit';
 
-const AdminForm = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+class MyCameraScreen extends Component {
+  onBottomButtonPressed(event) {
+    const captureImages = JSON.stringify(event.captureImages);
+    console.log(captureImages);
+  }
 
-  const handleImagePicker = () => {
-    const options = {
-      mediaType: 'photo',
-      quality: 1,
-      includeBase64: false,
-      maxHeight: 200,
-      maxWidth: 200,
-    };
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <CameraScreen
+          actions={{ leftButtonText: 'Cancel', rightButtonText: 'Done' }}
+          onBottomButtonPressed={event => this.onBottomButtonPressed(event)}
+          flashImages={{
+            on: require('../../assets/favicon.png'),
+            off: require('../../assets/icon.png'),
+            auto: require('../../assets/adaptive-icon.png'),
+          }}
+        />
+      </View>
+    );
+  }
+}
 
-    ImagePicker.launchImageLibrary(options, (response) => {
-      if (response.didCancel) {
-        console.log('User canceled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else if (response.uri) {
-        console.log('Selected image URI: ', response.uri);
-        // Handle the selected image here
-      }
-    });
-  };
-
-  return (
-    <View style={styles.container}>
-      {selectedImage && (
-        <Image source={selectedImage} style={styles.image} resizeMode="contain" />
-      )}
-      <Button title="Pick Image from Library" onPress={handleImagePicker} />
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: 300,
-    height: 300,
-  },
-});
-
-export default AdminForm;
+export default MyCameraScreen;

@@ -40,7 +40,7 @@ const CartPage = () => {
   };
 
   const handleCheckout = () => {
-    navigation.navigate('payment');
+    navigation.navigate('payment',{price});
   };
 
   return (
